@@ -36,21 +36,70 @@ body {
   outline: none;
   border-radius: 0.25em;
   padding: 0.375em;
+  padding-inline-end: 1.25rem;
   font-size: 0.875em;
 }
 .input::placeholder {
   color: var(--foreground-color-dark);
 }
-.input:focus-visible {
+.input:focus-visible,
+button:focus-visible {
   box-shadow: 0 0 0 0.25rem var(--outline-color);
 }
 .input:focus,
 .input:not(:placeholder-shown) {
   width: 15em;
 }
+.search-wrapper {
+  position: relative;
+}
+.search-icon,
+.close-icon {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  right: 0.25rem;
+  top: 50%;
+  translate: 0 -50%;
+  color: var(--foreground-color-dark);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  border-radius: 0.25rem;
+  rotate: 90deg;
+  transition-behavior: discrete;
+  transition: all 0.2s;
+}
+.search-wrapper:has(.input:placeholder-shown) .search-icon,
+.search-wrapper:has(.input:not(:placeholder-shown)) .close-icon {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  rotate: 0deg;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+.close-icon {
+}
 
 @media (prefers-reduced-motion: reduce) {
   .input {
     transition: none;
   }
+}
+input[type="search"]::-ms-clear,
+input[type="search"]::-ms-reveal {
+  appearance: none;
+  width: 0;
+  height: 0;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  appearance: none;
 }
