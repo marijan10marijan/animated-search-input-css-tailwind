@@ -24,7 +24,7 @@ body {
 }
 .box {
   width: 30px;
-  background-color: var(--foreground-color-dark);
+  background-color: var(--foreground-color);
 }
 
 .input {
@@ -81,8 +81,6 @@ button:focus-visible {
 button {
   all: unset;
   cursor: pointer;
-}
-.close-icon {
 }
 
 @media (prefers-reduced-motion: reduce) {
