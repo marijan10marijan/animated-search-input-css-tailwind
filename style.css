@@ -1,7 +1,56 @@
-.wrapper {
+:root {
+  --bg-color: rgb(53, 53, 53);
+  --bg-color-dark: rgb(30, 28, 28);
+  --foreground-color: rgb(236, 235, 235);
+  --foreground-color-dark: gray;
+  --outline-color: hsl(200, 100%, 50%);
 }
-.box {
+* {
+  box-sizing: border-box;
 }
 
-input {
+body {
+  background-color: var(--bg-color);
+  color: var(--foreground-color);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-inline: 1rem;
+  margin-block: 2rem;
+}
+.box {
+  width: 30px;
+  background-color: var(--foreground-color-dark);
+}
+
+.input {
+  background-color: var(--bg-color-dark);
+  color: var(--foreground-color);
+  width: 9em;
+  transition: width 0.25s;
+  border: none;
+  outline: none;
+  border-radius: 0.25em;
+  padding: 0.375em;
+  font-size: 0.875em;
+}
+.input::placeholder {
+  color: var(--foreground-color-dark);
+}
+.input:focus-visible {
+  box-shadow: 0 0 0 0.25rem var(--outline-color);
+}
+.input:focus,
+.input:not(:placeholder-shown) {
+  width: 15em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .input {
+    transition: none;
+  }
 }
